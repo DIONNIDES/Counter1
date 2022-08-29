@@ -1,0 +1,22 @@
+.display_wrapper{
+    background: aqua;
+    width: 260px;
+    height: 140px;
+    border-radius: 1rem;
+    margin-top: 20px;
+    line-height: 140px;
+    vertical-align: center;
+    border: 2px solid black;
+}
+
+.error_display{
+    background: aqua;
+    width: 260px;
+    height: 140px;
+    border-radius: 1rem;
+    color: red;
+    border: 2px solid red;
+    margin-top: 20px;
+    line-height: 140px;
+    vertical-align: center;
+}
