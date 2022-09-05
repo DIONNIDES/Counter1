@@ -6,6 +6,7 @@
     background: thistle;
     font-size: 1.5rem;
     border-radius: 1rem;
+    max-width: 100px;
 }
 
 .button_wrapper:disabled{

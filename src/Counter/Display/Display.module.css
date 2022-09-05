@@ -1,4 +1,4 @@
-.display_wrapper{
+.display_wrapper {
     background: aqua;
     width: 260px;
     height: 140px;
@@ -9,7 +9,7 @@
     border: 2px solid black;
 }
 
-.error_display{
+.error_display {
     background: aqua;
     width: 260px;
     height: 140px;
@@ -19,4 +19,22 @@
     margin-top: 20px;
     line-height: 140px;
     vertical-align: center;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
+
+.error_display div {
+    font-size: 2rem;
+    vertical-align: middle;
+}
+
+.error_message {
+    padding-bottom: 40px;
+    display: inline-block;
+    line-height: 140px;
+    font-size: 1.4rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
