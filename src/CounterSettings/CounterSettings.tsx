@@ -10,6 +10,7 @@ export type CounterType = {
     setToLocalStorage: () => void
     updateMinCountValue: (value: number) => void
     updateMaxCountValue: (value: number) => void
+    setActiveCounter:(activeCounter:boolean)=>void
 }
 
 export const CounterSettings = (props: CounterType) => {
@@ -26,6 +27,7 @@ export const CounterSettings = (props: CounterType) => {
             <ManageSettings
                 errorSettings={props.errorSettings}
                 setToLocalStorage={props.setToLocalStorage}
+                setActiveCounter={props.setActiveCounter}
             />
         </div>
     );

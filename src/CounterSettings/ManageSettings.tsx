@@ -7,17 +7,20 @@ export type ManagePropsType = {
     errorSettings: string | null
     setToLocalStorage: () => void
 
+    setActiveCounter: (activeCounter: boolean) => void
+
 }
 export const ManageSettings = (props: ManagePropsType) => {
 
 
     const onClickSetHandler = () => {
-        props.setToLocalStorage()
+        props.setToLocalStorage();
+        props.setActiveCounter(false);
     }
 
     return (
         <div className={styles.manage_wrapper}>
-            <Button disabled={props.errorSettings ? true : false} name={'set'} callBack={onClickSetHandler}/>
+            <Button disabled={!!(props.errorSettings)} name={'set'} callBack={onClickSetHandler}/>
         </div>
     );
 };

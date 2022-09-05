@@ -28,6 +28,7 @@ function App() {
     let [error, setError] = useState<boolean>(false);
     let [errorSettings, setErrorSettings] = useState<string | null>('');
     let [hint, setHint] = useState<string | null>('')
+    let [activeCounter, setActiveCounter] = useState(false);
 
 
     const setToLocalStorage = () => {
@@ -91,13 +92,38 @@ function App() {
 
     return (
         <div className="App">
-            <CounterSettings
+
+            {
+                activeCounter
+                ? <CounterSettings
+                        maxCount={maxCount}
+                        minCount={minCount}
+                        errorSettings={errorSettings}
+                        setToLocalStorage={setToLocalStorage}
+                        updateMinCountValue={updateMinCountValue}
+                        updateMaxCountValue={updateMaxCountValue}
+                        setActiveCounter={setActiveCounter}
+                    />
+                    : <Counter
+                        count={count}
+                        incrementCount={incrementCount}
+                        cleanCount={cleanCount}
+                        error={error}
+                        errorSettings={errorSettings}
+                        hint={hint}
+                        minCount={minCount}
+                        maxCount={maxCount}
+                        setActiveCounter={setActiveCounter}
+                    />
+            }
+{/*            <CounterSettings
                 maxCount={maxCount}
                 minCount={minCount}
                 errorSettings={errorSettings}
                 setToLocalStorage={setToLocalStorage}
                 updateMinCountValue={updateMinCountValue}
                 updateMaxCountValue={updateMaxCountValue}
+                setActiveCounter={setActiveCounter}
             />
             <Counter
                 count={count}
@@ -108,8 +134,8 @@ function App() {
                 hint={hint}
                 minCount={minCount}
                 maxCount={maxCount}
-
-            />
+                setActiveCounter={setActiveCounter}
+            />*/}
         </div>
 
 

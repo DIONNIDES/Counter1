@@ -12,6 +12,7 @@ export type CounterType = {
     hint: string | null
     minCount: number
     maxCount: number
+    setActiveCounter: (activeCounter: boolean) => void
 }
 
 export const Counter = (props: CounterType) => {
@@ -31,6 +32,7 @@ export const Counter = (props: CounterType) => {
                     count={props.count}
                     minCount={props.minCount}
                     hint={props.hint}
+                    setActiveCounter={props.setActiveCounter}
             />
         </div>
     );

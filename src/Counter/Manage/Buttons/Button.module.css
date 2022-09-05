@@ -2,9 +2,9 @@
 .button_wrapper {
     height: 60%;
     width: 70%;
-    margin: 1rem;
+    margin: 0.5rem;
     background: thistle;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 1rem;
     max-width: 100px;
 }
@@ -17,9 +17,9 @@
     border: 2px solid red;
     height: 60%;
     width: 70%;
-    margin: 1rem;
+    margin: 0.5rem;
     background: thistle;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .button_wrapper:hover {
@@ -27,6 +27,6 @@
     width: 70%;
     margin: 1rem;
     background: aqua;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 1rem;
 }

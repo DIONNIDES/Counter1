@@ -1,5 +1,6 @@
 .App {
-    display: grid;
-    grid-template-columns: 400px 400px;
-
+    margin: 300px auto;
+}
+body{
+    background-image:url('assets/bgc.png');
 }
