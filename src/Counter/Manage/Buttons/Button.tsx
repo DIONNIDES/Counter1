@@ -11,14 +11,14 @@ export type ButtonPropsType = {
 
 export const Button = (props: ButtonPropsType) => {
 
-    const onClickHandler = () => {
-        props.callBack()
-    }
+    // const onClickHandler = () => {
+    //     props.callBack()
+    // }
 
     return (
         <button
             className={props.error ? styles.error_button :styles.button_wrapper}
                 disabled={props.disabled}
-                onClick={onClickHandler}>{props.name}</button>
+                onClick={props.callBack}>{props.name}</button>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './DisplaySettings.module.css';
+import {SuperInput} from './SuperInput/SuperInput';
 
 export type DisplayPropsType = {
     maxCount: number
@@ -12,26 +13,23 @@ export type DisplayPropsType = {
 
 export const DisplaySettings = (props: DisplayPropsType) => {
 
-    const onMaxCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.updateMaxCountValue(Number(e.currentTarget.value))
+    const onMaxCountChange = (value: number) => {
+        props.updateMaxCountValue(value)
     }
 
-    const onMinCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.updateMinCountValue(Number(e.currentTarget.value))
+    const onMinCountChange = (value: number) => {
+        props.updateMaxCountValue(value)
     }
 
     let finalClassName = props.errorSettings ? styles.error_input : ''
 
     return (
         <div className={styles.display_wrapper}>
-            <div className={styles.display_field}>
-                <p>max value: </p>  <input value={props.maxCount} onChange={onMaxCountChange} type={'number'}
-                                           className={finalClassName}/>
-            </div>
-            <div className={styles.display_field}>
-                <p>min value: </p>  <input value={props.minCount} onChange={onMinCountChange} type={'number'}
-                                           className={finalClassName}/>
-            </div>
+            <SuperInput countLimit={props.maxCount} callback={(value: number) => onMaxCountChange(value)}
+                        finalClassName={finalClassName}/>
+            <SuperInput countLimit={props.minCount} callback={(value: number) => onMinCountChange(value)}
+                        finalClassName={finalClassName}/>
         </div>
     );
 };
+

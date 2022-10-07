@@ -8,6 +8,15 @@ function App() {
     const MAXCOUNT = 10;
     const MINCOUNT = 0;
 
+    let [minCount, setMinCount] = useState(0);
+    let [maxCount, setMaxCount] = useState(0);
+
+    let [count, setCount] = useState<number>(minCount);
+    let [error, setError] = useState<boolean>(false);
+    let [errorSettings, setErrorSettings] = useState<string | null>('');
+    let [hint, setHint] = useState<string | null>('')
+    let [activeCounter, setActiveCounter] = useState(false);
+
     useEffect(() => {
             let minCountValueAsString = localStorage.getItem('minCount');
             let maxCountValueAsString = localStorage.getItem('maxCount');
@@ -21,22 +30,10 @@ function App() {
         }, []
     );
 
-    let [minCount, setMinCount] = useState(0);
-    let [maxCount, setMaxCount] = useState(0);
-
-    let [count, setCount] = useState<number>(minCount);
-    let [error, setError] = useState<boolean>(false);
-    let [errorSettings, setErrorSettings] = useState<string | null>('');
-    let [hint, setHint] = useState<string | null>('')
-    let [activeCounter, setActiveCounter] = useState(false);
-
-
     const setToLocalStorage = () => {
 
-        if (minCount < MINCOUNT || minCount > MAXCOUNT || minCount >= maxCount) {
+        if (minCount < MINCOUNT || minCount > MAXCOUNT || minCount >= maxCount || maxCount < MINCOUNT || maxCount > MAXCOUNT) {
             setError(true);
-        } else if (maxCount < MINCOUNT || maxCount > MAXCOUNT && maxCount <= minCount) {
-            setError(true)
         } else {
             localStorage.setItem('minCount', JSON.stringify(minCount));
             localStorage.setItem('maxCount', JSON.stringify(maxCount))
@@ -44,19 +41,14 @@ function App() {
             setError(false);
             setHint('');
         }
-
-
     }
 
 
     const updateMinCountValue = (value: number) => {
-
+        setMinCount(value);
         if (MAXCOUNT < value || value < MINCOUNT || value >= maxCount || maxCount > MAXCOUNT || maxCount < MINCOUNT) {
-            setMinCount(value);
             setErrorSettings('value is incorrect!');
         } else {
-            setMinCount(value);
-            setCount(value)
             setErrorSettings('');
             setError(false);
             setHint('enter values and press set');
@@ -65,12 +57,10 @@ function App() {
     }
 
     const updateMaxCountValue = (value: number) => {
+        setMaxCount(value);
         if (MAXCOUNT < value || value < MINCOUNT || value <= minCount || minCount > MAXCOUNT || minCount < MINCOUNT) {
-            setMaxCount(value);
             setErrorSettings('value is incorrect!');
         } else {
-            setMaxCount(value);
-            setCount(minCount)
             setErrorSettings('');
             setError(false)
             setHint('enter values and press set');
@@ -81,8 +71,7 @@ function App() {
     const incrementCount = () => {
         const newCountValue = count + 1;
         if (newCountValue === maxCount) setError(true);
-        if (newCountValue <= maxCount)
-            setCount(newCountValue);
+        else setCount(newCountValue);
     }
 
     const cleanCount = () => {
@@ -116,26 +105,6 @@ function App() {
                         setActiveCounter={setActiveCounter}
                     />
             }
-{/*            <CounterSettings
-                maxCount={maxCount}
-                minCount={minCount}
-                errorSettings={errorSettings}
-                setToLocalStorage={setToLocalStorage}
-                updateMinCountValue={updateMinCountValue}
-                updateMaxCountValue={updateMaxCountValue}
-                setActiveCounter={setActiveCounter}
-            />
-            <Counter
-                count={count}
-                incrementCount={incrementCount}
-                cleanCount={cleanCount}
-                error={error}
-                errorSettings={errorSettings}
-                hint={hint}
-                minCount={minCount}
-                maxCount={maxCount}
-                setActiveCounter={setActiveCounter}
-            />*/}
         </div>
 
 

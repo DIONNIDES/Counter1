@@ -18,25 +18,25 @@ export const Manage = (props: ManagePropsType) => {
     let income = 'INC';
     let reset = 'reset';
     let set = 'set';
-    const onClickIncomeHandler = () => {
-        props.incrementCount();
-    }
-    const onClickResetHandler = () => {
-        props.cleanCount();
-    }
-
-    const onClickSetHandler = () => {
-        props.setActiveCounter(true);
-    }
+    // const onClickIncomeHandler = () => {
+    //     props.incrementCount();
+    // }
+    // const onClickResetHandler = () => {
+    //     props.cleanCount();
+    // }
+    //
+    // const onClickSetHandler = () => {
+    //     props.setActiveCounter(true);
+    // }
 
     return (
         <div className={styles.manage_wrapper}>
             <Button disabled={!!(props.error || props.errorSettings || props.hint)} name={income}
-                    callBack={onClickIncomeHandler}/>
+                    callBack={props.incrementCount}/>
             <Button disabled={!!(props.errorSettings || props.hint)} name={reset}
-                    callBack={onClickResetHandler}/>
+                    callBack={props.cleanCount}/>
             <Button disabled={!!(props.errorSettings || props.hint)} name={set}
-                    callBack={onClickSetHandler}/>
+                    callBack={() => props.setActiveCounter(true)}/>
         </div>
     );
 };
